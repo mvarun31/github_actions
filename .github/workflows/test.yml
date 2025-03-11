@@ -22,3 +22,14 @@ jobs:
                     
           echo "Received Token: $token"
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
+      - name: Push
+        id: push
+        uses: ./
+        with:
+          api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+          command: "push"
+          format: "npm"
+          owner: "testcheck"
+          repo: "github_action"
+          republish: "false" # needed ONLY if version is not changing
+          file: "npm-scripts-1.0.0.tgz" #real file that will repeat versions
