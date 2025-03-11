@@ -22,9 +22,8 @@ jobs:
                     
           echo "Received Token: $token"
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
-      - name: Push
-        id: push
-        uses: ./
+      - name: Upload package to Cloudsmith
+        uses: cloudsmith-io/action@v1
         with:
           api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
           command: "push"
@@ -32,4 +31,4 @@ jobs:
           owner: "testcheck"
           repo: "github_action"
           republish: "false" # needed ONLY if version is not changing
-          file: "npm-scripts-1.0.0.tgz" #real file that will repeat versions
+          file: "npm-scripts-1.0.0.tgz" # Your package file
