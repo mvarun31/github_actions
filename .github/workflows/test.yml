@@ -27,7 +27,7 @@ jobs:
 
           echo "Received Token: $token"
           echo "cloudsmith_api_key=$token" >> $GITHUB_ENV
-          
+
       - name: Push
         id: push
         uses: cloudsmith-io/action@master
@@ -38,5 +38,5 @@ jobs:
           owner: "testcheck"
           repo: "github_action"
           republish: "true"
-          file: "./cloudsmith-maven-example-1.0.0.jar"
-          executable: "false" # Add this to use pip instead
+          file: "./target/my-app-1.0.0.jar"
+          
