@@ -20,4 +20,5 @@ jobs:
           token=$(curl -X POST -H "Content-Type: application/json" -d "{\"oidc_token\":$value, \"service_slug\":\"github_action\"}" https://api.cloudsmith.io/openid/testcheck/ | jq -r '.token')
           curl --request GET --url https://api.cloudsmith.io/v1/user/self/ --header "X-Api-Key:Bearer $token" --header 'accept: application/json'
                     
+          echo "Received Token: $token"
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
