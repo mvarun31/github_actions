@@ -27,8 +27,7 @@ jobs:
 
           echo "Received Token: $token"
           echo "cloudsmith_api_key=$token" >> $GITHUB_ENV
-
-      ...
+          
       - name: Push
         id: push
         uses: cloudsmith-io/action@master
