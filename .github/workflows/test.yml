@@ -28,13 +28,16 @@ jobs:
           echo "Received Token: $token"
           echo "cloudsmith_api_key=$token" >> $GITHUB_ENV
 
-      - name: Push Package to Cloudsmith
-        uses: cloudsmith-io/github-action@v1
+      ...
+      - name: Push
+        id: push
+        uses: cloudsmith-io/action@master
         with:
-          api-key: ${{ env.cloudsmith_api_key }}
+          api-key: ${{ secrets.cloudsmith_api_key }}
           command: "push"
-          format: "npm"
+          format: "maven"
           owner: "testcheck"
           repo: "github_action"
-          republish: "false"
-          file: "./npm-scripts-1.0.0.tgz"
+          republish: "true"
+          file: "./cloudsmith-maven-example-1.0.0.jar"
+          executable: "false" # Add this to use pip instead
