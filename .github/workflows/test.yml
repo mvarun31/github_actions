@@ -8,11 +8,9 @@ permissions:
   contents: read
 
 jobs:
-  oidc_auth:
+  push_npm:
     runs-on: ubuntu-latest
-    name: OIDC Authentication
-    outputs:
-      cloudsmith_api_key: ${{ steps.auth.outputs.cloudsmith_api_key }}
+    name: OIDC Auth + NPM Push
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -29,19 +27,11 @@ jobs:
 
           echo "Received Token: $token"
           echo "cloudsmith_api_key=$token" >> $GITHUB_ENV
-          echo "::set-output name=cloudsmith_api_key::$token"
-
-  push_npm:
-    runs-on: ubuntu-latest
-    name: NPM Push Job
-    needs: oidc_auth
-    steps:
-      - uses: actions/checkout@v4
 
       - name: Push Package to Cloudsmith
-        uses: cloudsmith-io/action@master
+        uses: cloudsmith-io/github-action@v1
         with:
-          api-key: ${{ needs.oidc_auth.outputs.cloudsmith_api_key }}
+          api-key: ${{ env.cloudsmith_api_key }}
           command: "push"
           format: "npm"
           owner: "testcheck"
