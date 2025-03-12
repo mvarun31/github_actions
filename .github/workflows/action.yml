@@ -28,7 +28,7 @@ jobs:
         uses: cloudsmith-io/action@v0.5.3
         with:
           command: 'push'
-          format: 'Raw'
+          format: 'raw'
           owner: 'testcheck'             # Your Cloudsmith account name or org name (namespace)
           repo: 'github_action'         # Your Cloudsmith Repository name (slug)
           distro: 'debian'     # Your Distribution  (i.e Debian, Ubuntu)
