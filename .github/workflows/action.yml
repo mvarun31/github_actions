@@ -24,5 +24,17 @@ jobs:
                     
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
+      - name: Push
+        id: push
+        uses: cloudsmith-io/action@master
+        with:
+          api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+          command: "push"
+          format: "maven"
+          owner: "cloudsmith"
+          repo: "actions"
+          republish: "true"
+          file: "./cloudsmith-maven-example-1.0.0.jar"
+          executable: "false" # Add this to use pip instead
      
           
