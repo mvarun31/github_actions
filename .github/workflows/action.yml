@@ -26,7 +26,6 @@ jobs:
 
       - name: Maven Push Demo
         id: push
-        uses: ./
         with:
           api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
           command: "push"
