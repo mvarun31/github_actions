@@ -24,9 +24,7 @@ jobs:
                     
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
-      - name: Cloudsmith Push Debian Package
-         - uses: actions/checkout@v4
-      - name: Push
+      - name: Cloudsmith Push Raw Package
         id: push
         uses: cloudsmith-io/action@master
         with:
