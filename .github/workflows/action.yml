@@ -24,17 +24,18 @@ jobs:
                     
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
 
-      - name: Cloudsmith Push Debian Package
-        uses: cloudsmith-io/action@v0.5.3
+      - name: Push
+        id: push
+        uses: cloudsmith-io/action@master0.5.3
         with:
-          command: 'push'
-          format: 'raw'
-          owner: 'testcheck'             # Your Cloudsmith account name or org name (namespace)
-          repo: 'github_action'         # Your Cloudsmith Repository name (slug)
-          distro: 'debian'     # Your Distribution  (i.e Debian, Ubuntu)
-          release: 'buster'         # Your Distribution Release (i.e xenial, buster)
-          republish: 'true'          # needed if version is not changing
-          file: './npm.zip'  # debian package filename
+          api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+          command: "push"
+          format: "maven"
+          owner: "testcheck"
+          repo: "github_action"
+          republish: "true"
+          file: "./my-app-1.0.jar"
+          executable: "false" # Add this to use pip instead
 
        
             
