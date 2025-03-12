@@ -36,6 +36,7 @@ jobs:
           republish: "true"
           file: "./my-app-1.0.jar"
           executable: "false" # Add this to use pip instead
+          pom-file : "./pom.xml"
 
        
             
