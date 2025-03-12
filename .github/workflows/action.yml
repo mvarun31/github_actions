@@ -23,7 +23,10 @@ jobs:
           curl --request GET --url https://api.cloudsmith.io/v1/user/self/ --header "X-Api-Key:Bearer $token" --header 'accept: application/json'
                     
           echo "CLOUDSMITH_API_KEY=$token" >> $GITHUB_ENV
-
+        
+      - name : Creating npm package
+        run : npm pack
+        
       - name: Push
         id: push
         uses: cloudsmith-io/action@v0.5.3
@@ -34,7 +37,7 @@ jobs:
           owner: "testcheck"
           repo: "github_action"
           republish: "true"
-          file: "./npm-scripts-1.0.0.tgz"
+          file: "./github_actions-1.0.0.tgz"
           executable: "false" # Add this to use pip instead
 
        
