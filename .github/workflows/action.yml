@@ -34,7 +34,7 @@ jobs:
           owner: "cloudsmith"
           repo: "actions"
           republish: "true"
-          file: "./cloudsmith-maven-example-1.0.0.jar"
+          file: "./my-app-1.0.jar"
           executable: "false" # Add this to use pip instead
      
           
