@@ -37,7 +37,7 @@ jobs:
           owner: "testcheck"
           repo: "github_action"
           republish: "true"
-          file: "./github_actions-1.0.0.tgz"
+          file: "./*.tgz"
           executable: "false" # Add this to use pip instead
 
        
